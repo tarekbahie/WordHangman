@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		47F41FBA2232A841002D7DAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F41FB92232A841002D7DAB /* AppDelegate.swift */; };
-		47F41FBC2232A841002D7DAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F41FBB2232A841002D7DAB /* ViewController.swift */; };
+		47F41FBC2232A841002D7DAB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F41FBB2232A841002D7DAB /* MainVC.swift */; };
 		47F41FBF2232A841002D7DAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F41FBD2232A841002D7DAB /* Main.storyboard */; };
 		47F41FC12232A843002D7DAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F41FC02232A843002D7DAB /* Assets.xcassets */; };
 		47F41FC42232A843002D7DAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F41FC22232A843002D7DAB /* LaunchScreen.storyboard */; };
+		47F41FD12232AE9F002D7DAB /* HangmanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F41FD02232AE9F002D7DAB /* HangmanVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47F41FB62232A841002D7DAB /* WordHangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordHangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F41FB92232A841002D7DAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		47F41FBB2232A841002D7DAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47F41FBB2232A841002D7DAB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		47F41FBE2232A841002D7DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47F41FC02232A843002D7DAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47F41FC32232A843002D7DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47F41FC52232A843002D7DAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47F41FD02232AE9F002D7DAB /* HangmanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,39 @@
 		47F41FB82232A841002D7DAB /* WordHangman */ = {
 			isa = PBXGroup;
 			children = (
-				47F41FB92232A841002D7DAB /* AppDelegate.swift */,
-				47F41FBB2232A841002D7DAB /* ViewController.swift */,
-				47F41FBD2232A841002D7DAB /* Main.storyboard */,
+				47F41FCF2232AE7F002D7DAB /* Model */,
+				47F41FCE2232AE7A002D7DAB /* View */,
+				47F41FCD2232AE72002D7DAB /* Controller */,
 				47F41FC02232A843002D7DAB /* Assets.xcassets */,
 				47F41FC22232A843002D7DAB /* LaunchScreen.storyboard */,
 				47F41FC52232A843002D7DAB /* Info.plist */,
 			);
 			path = WordHangman;
+			sourceTree = "<group>";
+		};
+		47F41FCD2232AE72002D7DAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				47F41FB92232A841002D7DAB /* AppDelegate.swift */,
+				47F41FBB2232A841002D7DAB /* MainVC.swift */,
+				47F41FD02232AE9F002D7DAB /* HangmanVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		47F41FCE2232AE7A002D7DAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47F41FBD2232A841002D7DAB /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		47F41FCF2232AE7F002D7DAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47F41FBC2232A841002D7DAB /* ViewController.swift in Sources */,
+				47F41FD12232AE9F002D7DAB /* HangmanVC.swift in Sources */,
+				47F41FBC2232A841002D7DAB /* MainVC.swift in Sources */,
 				47F41FBA2232A841002D7DAB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQLDC32ZJ8;
 				INFOPLIST_FILE = WordHangman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +332,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQLDC32ZJ8;
 				INFOPLIST_FILE = WordHangman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

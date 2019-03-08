@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func newGameBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toNewGame", sender: self)
+    }
+    
 }
 
