@@ -31,6 +31,7 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         choosenLettersLbl.isUserInteractionEnabled = false
+        restartBtn.isHidden = true
         chooseWordToStartGame()
         wordLbl.text = wordAsUnderscores
         remainingGuessLbl.text = "\(maxGuess) guesses left"
@@ -39,6 +40,7 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
     }
     @IBAction func restartBtnPressed(_ sender: Any) {
         wordToGuess = ""
+        restartBtn.isHidden = true
         maxGuess = 7
         remainingGuessLbl.text = "\(maxGuess) guesses left"
         wordAsUnderscores = ""
@@ -46,8 +48,6 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
         chooseWordToStartGame()
         wordLbl.text = wordAsUnderscores
         letterTxtField.isEnabled = true
-        print(wordToGuess)
-        print(wordAsUnderscores)
     }
     
     // MARK: - Word Manipulation
@@ -64,7 +64,7 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
         while myIndex < wordToGuess.endIndex {
             for _ in 0..<wordToGuess.count {
                 if wordToGuess[myIndex] == " " {
-                    wordAsUnderscores.append("  ")
+                    wordAsUnderscores.append(" ")
                     myIndex = wordToGuess.index(after: myIndex)
                 } else {
                     wordAsUnderscores.append("_")
@@ -85,7 +85,8 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
     // MARK: - TextFieldDelegate
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let letterGuessed = textField.text else { return }
+        guard let letterGuessed = textField.text, textField.text != ""
+        else { return }
         letterTxtField.text?.removeAll()
         let currentLetterBank : String = choosenLettersLbl.text ?? ""
         if currentLetterBank.contains(letterGuessed) {
@@ -143,6 +144,7 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
         if !(wordAsUnderscores.contains("_")) {
             remainingGuessLbl.text = "You win! :)"
             letterTxtField.isEnabled = false
+            restartBtn.isHidden = false
         }
         
     }
@@ -150,13 +152,18 @@ class HangmanVC: UIViewController, UITextFieldDelegate {
         maxGuess -= 1
         hangmanImg.isHidden = false
         if maxGuess == 0 {
-            hangmanImg.image = UIImage(named: "Unknown")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.hangmanImg.image = UIImage(named: "Unknown")
+            }
             remainingGuessLbl.text = "You lost! the correct answer is: \(wordToGuess)"
             wordLbl.text = ""
             letterTxtField.isEnabled = false
+            restartBtn.isHidden = false
         } else {
             remainingGuessLbl.text = "\(maxGuess) guesses left"
-            hangmanImg.image = UIImage(named: "Unknown\(maxGuess)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.hangmanImg.image = UIImage(named: "Unknown\(self.maxGuess)")
+            }
         }
     }
 }
